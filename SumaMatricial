@@ -1,9 +1,11 @@
+
 import  sys
 arr = []
-res = []
-arr_temp = map(int,raw_input().strip().split(' '))
+arr = map(int,raw_input().strip().split(' '))
 arr.append(arr_temp)
-n = len(arr_temp)
-for arr_i in xrange(n):
-    arr_temp = map(int,raw_input().strip().split(' '))
-    arr.append(arr_temp)
+n = len(arr)
+for i in xrange(n):
+        lista =  map(int,raw_input().strip().split(' '))
+        for j in xrange(n):
+                arr[i] += lista[j]
+print arr
