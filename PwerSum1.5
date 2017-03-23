@@ -1,0 +1,9 @@
+import sys
+def suma(int x, int b):
+    if(x == 1 or x == 2 or x == 3):
+        return x
+    z = (int)(x**(1/b))
+    return z + suma(z, b)
+m = imput()
+n = imput()
+print suma(m, n)
