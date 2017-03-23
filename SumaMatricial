@@ -4,7 +4,7 @@ arr = []
 arr = map(int,raw_input().strip().split(' '))
 arr.append(arr_temp)
 n = len(arr)
-for i in xrange(n):
+for i in xrange(n-1):
         lista =  map(int,raw_input().strip().split(' '))
         for j in xrange(n):
                 arr[i] += lista[j]
