@@ -7,29 +7,37 @@ import java.util.regex.*;
 public class Solution {
 
     public static void main(String[] args) {
-        
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
-		String s = in.next(), res="";
+		String a = in.next(), solo="";
 		int k = in.nextInt();
-        
-		for (int i = 0; i < s.length(); i++) {
-            int test = s.codePointAt(i)+k%25;
-			if (( test>= 65  && test <= 90) || (test>= 97  && test <= 122)) {
-				res += (char)(test);
-			} 
+		for(int i=0; i < a.length(); i++){
+			int p =(a.charAt(i)+(k%26));
+			if(a.charAt(i)>=65 && a.charAt(i)<=90 || a.charAt(i)>=97 && a.charAt(i)<=122){
+				if(p>=65 && p<=90 && a.charAt(i)>=65 && a.charAt(i)<=90){
+
+					solo += (char)(p);
+				}
+				else if(a.charAt(i)>=97 && a.charAt(i)<=122 && p>=97 && p<=122){
+					solo += (char)(p);
+				}
+				else{
+					if(a.charAt(i)>=65 && a.charAt(i)<=90 && p>90){
+
+						solo += (char)(64 + p%90);
+					}
+					else{
+
+						solo += (char)(96 + p%122);
+					}
+				}   
+			}     
 			else{
-                if(test > 90 && s.codePointAt(i)<=90 && s.codePointAt(i)>=65 )
-				    res += (char)((int)('A')+ (test-90-1)) ;
-                else if(test>122 && s.codePointAt(i)<=122 &&  s.codePointAt(i)>=97)
-				    res += (char)((int)('a')+ (test-122-1));
-                else 
-                    res +=(char)s.codePointAt(i);
+
+				solo += (char)(a.charAt(i));
+			}   
 		}
-			
-		
-		}
-		System.out.println(res);
-	
+		System.out.println(solo);
+		in.close();	
     }
 }
