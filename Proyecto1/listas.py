@@ -16,35 +16,52 @@ from PIL import Image
 from Imagen import *
 
 
-def diccionario():
+def diccionario(ruta):
     imagenes = {}
-    
-    for (ruta,carpeta,imagen) in walk("C:\Users\VICTORMANUEL\Desktop\Imagenes"):
+    for (ruta,carpeta,imagen) in walk(ruta):
         imagenes[ruta] = imagen
     return imagenes
+
             
-def listaImg():
-    imagenes = diccionario()
+def listaImg(ruta):
+    imagenes = diccionario(ruta)
     lista = []
     for ce in imagenes:
         for me in imagenes[ce]:
             if me.endswith(('.png', '.jpg', '.gif')):
-                lista.append( ce + "\\" + me )
+                lista.append( ce + "/" + me )
     return lista
+
+
             
+def listaNom(ruta):
+    imagenes = diccionario(ruta)
+    lista = []
+    for ce in imagenes:
+        for me in imagenes[ce]:
+            if me.endswith(('.png', '.jpg', '.gif')):
+                lista.append( me )
+    return lista
 
 
-def mostrar():
+
+def listaRutas(ruta):
+    imagenes = diccionario(ruta)
+    lista = []
+    for ce in imagenes:
+        for me in imagenes[ce]:
+            if me.endswith(('.png', '.jpg', '.gif')):
+                lista.append( ce )
+    return lista
+
+
+
+def mostrar(ruta):
+    try:
+        img = mpimg.imread(ruta)
+        plt.imshow(img)
+     except: 
+          print "Error de archivo"
+    return "hola" 
     
-    img = mpimg.imread("C:\Users\VICTORMANUEL\Desktop\Imagenes\Nueva carpeta (2)\1.jpg")
-    plt.imshow(img)
-    img.show()
-    
 
-def main():
-    Lista_imagen = listaImg()
-    for i in Lista_imagen:
-        if i.endswith(('.png', '.pnj', '.gif')):
-            ficheros = os.listdir("C:\Users\VICTORMANUEL\Desktop\Imagenes\Nueva carpeta (2)\1.jpg")
-            mi_imagen= Image.open(ficheros)
-            mi_imagen.show()
